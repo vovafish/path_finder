@@ -36,6 +36,7 @@ def find_start(maze, start):
 
     return None
 
+
 def find_path(maze, stdscr):
     start = "O"
     end = "X"
@@ -54,6 +55,19 @@ def find_path(maze, stdscr):
             return path
 
 
+def find_neighbors(maze, row, col):
+    neighbor = []
+
+    if row > 0:  # UP
+        neighbor.append((row - 1, col))
+    if row + 1 < len(maze):  # down
+        neighbor.append((row + 1, col))
+    if col > 0:  # left
+        neighbor.append((row, col - 1))
+    if col + 1 < len(maze[0]):  # right
+        neighbor.append((row, col + 1))
+
+    return neighbor
 
 
 def main(stdscr):  # standard output screen
