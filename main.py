@@ -42,6 +42,19 @@ def find_path(maze, stdscr):
     start_pos = find_start(maze, start)
 
     q = queue.Queue()
+    q.put((start_pos, [start_pos]))
+
+    visited = set()
+
+    while not q.empty():
+        current_pos, path = q.get()
+        row, col = current_pos
+
+        if maze[row][col] == end:
+            return path
+
+
+
 
 def main(stdscr):  # standard output screen
     curses.init_pair(1, curses.COLOR_BLUE, curses.COLOR_BLACK)
