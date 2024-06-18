@@ -16,9 +16,24 @@ maze = [
 ]
 
 
+def print_maze(maze, stdscr, path=[]):
+    BLUE = curses.color_pair(1)
+    RED = curses.color_pair(2)
+
+    for i, row in enumerate(maze):
+        for j, value in enumerate(row):
+            try:
+                stdscr.addstr(i, j * 2, value, BLUE)
+            except curses.error:
+                pass
+
+
 def main(stdscr):  # standard output screen
+    curses.init_pair(1, curses.COLOR_BLUE, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
+
     stdscr.clear()
-    stdscr.addstr(0, 0, "hi world")
+    print_maze(maze, stdscr)
     stdscr.refresh()
     stdscr.getch()  # get character
 
